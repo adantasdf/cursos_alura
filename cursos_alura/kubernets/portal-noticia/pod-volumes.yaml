@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-volume
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
+      volumeMounts:
+        - mountPath: /volume-dentro-do-container
+          name: one-volume
+    # - name: jenkins
+    #   image: jenkins:alpine
+    #   volumeMounts:
+    #     - mountPath: /volume-dentro-do-container
+    #       name: one-volume
+  volumes:
+    - name: one-volume
+      hostPath:
+        path: /home/volumes
+        type: Directory
